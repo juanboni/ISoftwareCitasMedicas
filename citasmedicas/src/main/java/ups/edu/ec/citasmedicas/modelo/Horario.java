@@ -14,9 +14,9 @@ import javax.persistence.Table;
 public class Horario {
 	@Id
 	private int id;
-	/*@OneToOne
+	@OneToOne
 	@JoinColumn(name = "id")
-	private Cita citas;*/
+	private Cita citas;
 	private String dia;
 	public int getId() {
 		return id;
@@ -24,14 +24,12 @@ public class Horario {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-	/*public Cita getCitas() {
+	public Cita getCitas() {
 		return citas;
 	}
 	public void setCitas(Cita citas) {
 		this.citas = citas;
-	}*/
+	}
 	public String getDia() {
 		return dia;
 	}
