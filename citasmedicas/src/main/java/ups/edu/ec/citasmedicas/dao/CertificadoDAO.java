@@ -3,6 +3,7 @@ package ups.edu.ec.citasmedicas.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -10,7 +11,7 @@ import javax.persistence.Query;
 import ups.edu.ec.citasmedicas.modelo.Certificado;
 
 
-
+@Stateless
 public class CertificadoDAO {
 	@PersistenceContext // coge el datasourses que tenemos en el proyecto(persistence.xml)
 	private EntityManager em;
