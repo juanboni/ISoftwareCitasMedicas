@@ -11,17 +11,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ups.edu.ec.citasmedicas.business.CalendarioONLocal;
+import ups.edu.ec.citasmedicas.business.CertificadoONLocal;
 import ups.edu.ec.citasmedicas.business.CitasONLocal;
 import ups.edu.ec.citasmedicas.business.ConsultaMedicaONLocal;
 import ups.edu.ec.citasmedicas.business.FacturacionONLocal;
+import ups.edu.ec.citasmedicas.business.HistorialClinicoONLocal;
 import ups.edu.ec.citasmedicas.business.MedicoON;
 import ups.edu.ec.citasmedicas.business.MedicoONLocal;
+import ups.edu.ec.citasmedicas.business.PacienteONLocal;
+import ups.edu.ec.citasmedicas.business.RecetaONLocal;
+import ups.edu.ec.citasmedicas.modelo.Certificado;
 import ups.edu.ec.citasmedicas.modelo.Cita;
 import ups.edu.ec.citasmedicas.modelo.ConsultaMedica;
 import ups.edu.ec.citasmedicas.modelo.Factura;
+import ups.edu.ec.citasmedicas.modelo.HistorialClinico;
 import ups.edu.ec.citasmedicas.modelo.Horario;
 import ups.edu.ec.citasmedicas.modelo.Medico;
 import ups.edu.ec.citasmedicas.modelo.Paciente;
+import ups.edu.ec.citasmedicas.modelo.Receta;
 
 
 
@@ -37,6 +44,8 @@ public class ventanaprincipal extends HttpServlet {
 	@Inject
     private MedicoONLocal medicoon;
 	@Inject
+	private PacienteONLocal pacienteon;
+	@Inject
 	private CitasONLocal  citaonlocal;
 	@Inject
 	private CalendarioONLocal calendariolocal;
@@ -44,6 +53,12 @@ public class ventanaprincipal extends HttpServlet {
 	private FacturacionONLocal facturalocal;
 	@Inject
 	private ConsultaMedicaONLocal consultamedica;
+	@Inject
+	private HistorialClinicoONLocal historialchinico;
+	@Inject
+	private RecetaONLocal recetaon;
+	@Inject
+	private CertificadoONLocal certificado;
 	
 	
     /**
@@ -59,17 +74,35 @@ public class ventanaprincipal extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//---INSERTANDO PACIENTE
+		
+		Paciente pac1 = new Paciente();
+		pac1.setId(1);
+		pac1.setCedula("0302882726");
+		pac1.setNombres("Janneth Matute");
+		pac1.setDireccion("gualaceo 16 de abril");
+		pac1.setTelefono("030288272");
+		pac1.setFechaNacimiento("14/11/1998");
+		pac1.setEmail("jannethn@gmail.com");
+		
+
+		try {
+			pacienteon.insertPaciente(pac1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//---Medico
 		System.out.println("insertAR MEDICO");
 		Medico m=new Medico();
 		m.setId(1);
 		m.setCedula("0302882726");
-		m.setNombres("Evelin Castro");
+		m.setNombres("Juan Castro");
 		m.setDireccion("azogues 16 de abril");
 		m.setTelefono("030288272");
 		m.setFechaNacimiento("14/11/1998");
-		m.setEmail("evelin@gmail.com");
+		m.setEmail("juan@gmail.com");
 		m.setEspecialidad("general");
 		
 		try {
@@ -90,7 +123,7 @@ public class ventanaprincipal extends HttpServlet {
 		
 		Paciente pc=new Paciente();
 		pc.setId(1);
-		//ct.setPaciente(pc);
+		ct.setPaciente(pc);
 		Medico md=new Medico();
 		md.setId(1);
 		ct.setMedico(md);
@@ -157,7 +190,45 @@ public class ventanaprincipal extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		//insertando historial chinico
+		HistorialClinico hist=new HistorialClinico();
+		hist.setId(1);
+		ConsultaMedica cons1=new ConsultaMedica();
+		cons1.setId(1);
+		hist.setConsultasmedicas(cons1);
+		try {
+			historialchinico.insertHistorialClinico(hist);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//insertando receta
+		Receta receta=new Receta();
+		receta.setId(1);
+		receta.setDiagnostico("tomar pastillas fiebre por 2 dias");
+		ConsultaMedica cons2=new ConsultaMedica();
+		cons2.setId(1);
+		receta.setConsulta(cons2);
+		try {
+			recetaon.insertReceta(receta);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		//insertando certificado
+		Certificado certifi=new Certificado();
+		certifi.setId(1);
+		certifi.setObservaciones("No puede realizar actividad fisica y descansar por una semana");
+		ConsultaMedica cons3=new ConsultaMedica();
+		cons3.setId(1);
+		certifi.setConsultasmedicas(cons3);
+		try {
+			certificado.insertCertificado(certifi);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
