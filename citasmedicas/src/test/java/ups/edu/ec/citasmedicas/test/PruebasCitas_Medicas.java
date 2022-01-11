@@ -126,27 +126,24 @@ public class PruebasCitas_Medicas {
 		h.setId(1);
 		
 
-		Cita c=new Cita();
-		c.setId(1);
-		Paciente m=new Paciente();
-		m.setId(1);
-		m.setCedula("0302882725");
-		m.setNombres("Albert Boni");
-		m.setDireccion("azogues 16 de abril");
-		m.setTelefono("030288272");
-		m.setFechaNacimiento("14/11/1998");
-		m.setEmail("juanbny85@gmail.com");
-		c.setPaciente(m);
-		ArrayList<Cita> citas=new ArrayList<Cita>();
-		citas.add(c);
-		h.setCitas(citas);
+		
+		Medico md=new Medico();
+		md.setId(1);
+		
+		ArrayList<Medico> medicos=new ArrayList<Medico>();
+		medicos.add(md);
+		h.setMedicos(medicos);
 		h.setDia("lunes");
+		h.setHorainicio("8:00 am");
+		h.setHorafinal("6:00 pm");
 	
 		
 		assertTrue(h.getId()==1);
 		
-		equals(h.getCitas()==citas);
+		equals(h.getMedicos()==medicos);
 		equals(h.getDia()=="lunes");
+		equals(h.getHorainicio()=="8:00 am");
+		equals(h.getHorafinal()=="6:00 pm");
 		
 		
 		

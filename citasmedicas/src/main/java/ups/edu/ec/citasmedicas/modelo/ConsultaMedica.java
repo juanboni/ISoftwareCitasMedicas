@@ -1,5 +1,6 @@
 package ups.edu.ec.citasmedicas.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,10 +11,11 @@ import javax.persistence.Table;
 @Table(name = "TBL_Consulta")
 public class ConsultaMedica {
 	@Id
+	@Column(name = "Con_id")
 	private int id;
 	private String diagnostico;
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "cit_id")
 	private Cita cita;
 	public int getId() {
 		return id;

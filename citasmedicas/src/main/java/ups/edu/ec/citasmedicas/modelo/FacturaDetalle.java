@@ -1,10 +1,9 @@
 package ups.edu.ec.citasmedicas.modelo;
 
-
-
+import javax.persistence.Column;
 
 public class FacturaDetalle {
-	
+	@Column(name = "cit_id")
 	private int id;
 	private Cita cita;
 	private double precio;
