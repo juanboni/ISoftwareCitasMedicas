@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ups.edu.ec.citasmedicas.business.CitasONLocal;
 import ups.edu.ec.citasmedicas.business.MedicoON;
 import ups.edu.ec.citasmedicas.business.MedicoONLocal;
+import ups.edu.ec.citasmedicas.modelo.Cita;
 import ups.edu.ec.citasmedicas.modelo.Medico;
+import ups.edu.ec.citasmedicas.modelo.Paciente;
 
 
 
@@ -26,6 +29,9 @@ public class ventanaprincipal extends HttpServlet {
 	
 	@Inject
     private MedicoONLocal medicoon;
+	@Inject
+	private CitasONLocal  citaonlocal;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -41,7 +47,7 @@ public class ventanaprincipal extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//---Medico
-		System.out.println("insertAR MEDICO");
+		/*System.out.println("insertAR MEDICO");
 		Medico m=new Medico();
 		m.setId(2);
 		m.setCedula("0302882726");
@@ -62,6 +68,30 @@ public class ventanaprincipal extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		//System.out.println("insertado"+medicoon.getMedicos());
+		 * */
+		 //----- insertando citamedica
+		Cita ct= new Cita();
+		ct.setId(3);
+		
+		Paciente pc=new Paciente();
+		pc.setId(1);
+		ct.setPaciente(pc);
+		Medico md=new Medico();
+		md.setId(1);
+		ct.setMedico(md);
+		ct.setEstado("pendiente");
+		ct.setFecha("11/2/2022");
+		ct.setHora("9:00");
+		
+		try {
+			citaonlocal.insertCita(ct);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 
 	/**

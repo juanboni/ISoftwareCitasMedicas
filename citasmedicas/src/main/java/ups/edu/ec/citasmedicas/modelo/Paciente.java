@@ -1,5 +1,6 @@
 package ups.edu.ec.citasmedicas.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 @Table(name = "TBL_Paciente")
 public class Paciente {
 	@Id
+	@Column(name = "pac_id")
 	private int id;
 	private String cedula;
 	private String nombres;
