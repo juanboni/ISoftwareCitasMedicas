@@ -1,5 +1,6 @@
 package ups.edu.ec.citasmedicas.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,10 +11,11 @@ import javax.persistence.Table;
 @Table(name = "TBL_Factura")
 public class Factura {
 	@Id
+	@Column(name = "fac_id")
 	private int id;
 	private String Fecha;
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "cit_id")
 	private Cita cita;
 	private double total;
 	public int getId() {

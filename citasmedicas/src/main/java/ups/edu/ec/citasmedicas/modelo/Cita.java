@@ -1,5 +1,9 @@
 package ups.edu.ec.citasmedicas.modelo;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -8,14 +12,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TBL_Cita")
-public class Cita {
+public class Cita implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
+	@Column(name = "cit_id")
 	private int id;
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "pac_id")
 	private Paciente paciente;
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "med_id")
 	private Medico medico;
 	private String estado;
 	private String hora; 

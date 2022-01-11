@@ -8,43 +8,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import ups.edu.ec.citasmedicas.modelo.ConsultaMedica;
 import ups.edu.ec.citasmedicas.modelo.Horario;
 import ups.edu.ec.citasmedicas.modelo.Medico;
-
-
-
-
 @Stateless
-public class ConsultaMedicaDAO {
-	
+public class CalendarioDAO {
 	@PersistenceContext // coge el datasourses que tenemos en el proyecto(persistence.xml)
 	private EntityManager em;
 	
-	public void insert(ConsultaMedica p) {
+	public void insert(Horario p) {
 		em.persist(p);
 	}
 	
-	public void update(ConsultaMedica p) {
+	public void update(Horario p) {
 		em.merge(p);
 	}
 	
-	public ConsultaMedica read(String id) {
-		ConsultaMedica p= em.find(ConsultaMedica.class, id);
+	public Horario read(String id) {
+		Horario p= em.find(Horario.class, id);
 		return p;
 	}
 	
 	
 	public void delete(int id) {
-		ConsultaMedica p= em.find(ConsultaMedica.class, id);
+		Horario p= em.find(Horario.class, id);
 		em.remove(p);
 	}
-	public List<ConsultaMedica> getList(){
-		List<ConsultaMedica> listado=new ArrayList<ConsultaMedica>();
-		String jpql="SELECT p FROM ConsultaMedica p";
-		Query query= em.createQuery(jpql,ConsultaMedica.class);
+	public List<Horario> getList(){
+		List<Horario> listado=new ArrayList<Horario>();
+		String jpql="SELECT p FROM Horario p";
+		Query query= em.createQuery(jpql,Medico.class);
 		listado = query.getResultList();
 		return listado;
 	}
-	
+
 }
