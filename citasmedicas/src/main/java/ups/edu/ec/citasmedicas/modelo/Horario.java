@@ -16,9 +16,7 @@ public class Horario {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "id")
 	private List<Cita> citas;
-	private String fecha;
 	private String dia;
-	private int hora;
 	public int getId() {
 		return id;
 	}
@@ -31,23 +29,12 @@ public class Horario {
 	public void setCitas(List<Cita> citas) {
 		this.citas = citas;
 	}
-	public String getFecha() {
-		return fecha;
-	}
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
+	
 	public String getDia() {
 		return dia;
 	}
 	public void setDia(String dia) {
 		this.dia = dia;
-	}
-	public int getHora() {
-		return hora;
-	}
-	public void setHora(int hora) {
-		this.hora = hora;
 	}
 	
 	

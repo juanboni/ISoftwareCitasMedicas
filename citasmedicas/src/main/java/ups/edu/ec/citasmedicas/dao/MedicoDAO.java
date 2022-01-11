@@ -38,7 +38,7 @@ public class MedicoDAO {
 	}
 	public List<Medico> getList(){
 		List<Medico> listado=new ArrayList<Medico>();
-		String jpql="SELECT p FROM Persona p";
+		String jpql="SELECT p FROM Paciente p";
 		Query query= em.createQuery(jpql,Medico.class);
 		listado = query.getResultList();
 		return listado;

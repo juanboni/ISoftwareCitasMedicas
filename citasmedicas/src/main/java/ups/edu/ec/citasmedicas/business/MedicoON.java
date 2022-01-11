@@ -11,7 +11,7 @@ import ups.edu.ec.citasmedicas.modelo.Medico;
 ;
 
 @Stateless
-public class MedicoON {
+public class MedicoON implements MedicoONLocal {
 	
 	
 	@Inject
@@ -19,5 +19,8 @@ public class MedicoON {
 	
 	public void insertMedico(Medico medico) throws Exception {
 		daoMedico.insert(medico);	
+	}
+	public List<Medico> getClientes(){
+		return daoMedico.getList();
 	}
 }

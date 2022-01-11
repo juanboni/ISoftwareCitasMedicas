@@ -124,7 +124,7 @@ public class PruebasCitas_Medicas {
 	public void testcrearHorario() {
 		Horario h=new Horario();
 		h.setId(1);
-		h.setFecha("9/1/2022");
+		
 
 		Cita c=new Cita();
 		c.setId(1);
@@ -141,13 +141,13 @@ public class PruebasCitas_Medicas {
 		citas.add(c);
 		h.setCitas(citas);
 		h.setDia("lunes");
-		h.setHora(8);
+	
 		
 		assertTrue(h.getId()==1);
-		assertTrue(h.getFecha()=="9/1/2022");
+		
 		equals(h.getCitas()==citas);
 		equals(h.getDia()=="lunes");
-		equals(h.getHora()==8);
+		
 		
 		
 		
@@ -236,15 +236,14 @@ public class PruebasCitas_Medicas {
 		m.setEmail("juanbny85@gmail.com");
 		c.setPaciente(m);
 		cm.setCita(c);
-		ArrayList<ConsultaMedica> consultas=new ArrayList<ConsultaMedica>();
-		consultas.add(cm);
-		hc.setConsultasmedicas(consultas);
+		
+		hc.setConsultasmedicas(cm);
 		
 		assertTrue(hc.getId()==1);
-		assertTrue(hc.getConsultasmedicas()==consultas);
+		assertTrue(hc.getConsultasmedicas()==cm);
 		
 		assertEquals(hc.getId(),1);
-		assertEquals(hc.getConsultasmedicas(),consultas);
+		assertEquals(hc.getConsultasmedicas(),cm);
 		
 		
 	}
@@ -270,15 +269,14 @@ public class PruebasCitas_Medicas {
 		m.setEmail("juanbny85@gmail.com");
 		c.setPaciente(m);
 		cm.setCita(c);
-		ArrayList<ConsultaMedica> consultas=new ArrayList<ConsultaMedica>();
-		consultas.add(cm);
-		crt.setConsultasmedicas(consultas);
+		
+		crt.setConsultasmedicas(cm);
 		
 		assertTrue(crt.getId()==1);
-		assertTrue(crt.getConsultasmedicas()==consultas);
+		assertTrue(crt.getConsultasmedicas()==cm);
 		
 		assertEquals(crt.getId(),1);
-		assertEquals(crt.getConsultasmedicas(),consultas);
+		assertEquals(crt.getConsultasmedicas(),cm);
 		
 	}
 	

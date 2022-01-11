@@ -11,6 +11,7 @@ public class Receta {
 	@Id
 	private int id;
 	private String diagnostico;
+	
 	@OneToOne
 	@JoinColumn(name = "id")
 	private ConsultaMedica consulta;

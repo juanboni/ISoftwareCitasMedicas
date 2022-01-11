@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ups.edu.ec.citasmedicas.business.MedicoON;
+import ups.edu.ec.citasmedicas.business.MedicoONLocal;
 import ups.edu.ec.citasmedicas.modelo.Medico;
 
 
@@ -24,7 +25,7 @@ public class ventanaprincipal extends HttpServlet {
        
 	
 	@Inject
-    private MedicoON medicoon;
+    private MedicoONLocal medicoon;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,13 +43,13 @@ public class ventanaprincipal extends HttpServlet {
 		//---Medico
 		System.out.println("insertAR MEDICO");
 		Medico m=new Medico();
-		m.setId(1);
-		m.setCedula("0302882725");
-		m.setNombres("Juan Boni");
+		m.setId(2);
+		m.setCedula("0302882726");
+		m.setNombres("Evelin Castro");
 		m.setDireccion("azogues 16 de abril");
 		m.setTelefono("030288272");
 		m.setFechaNacimiento("14/11/1998");
-		m.setEmail("juanbny85@gmail.com");
+		m.setEmail("evelin@gmail.com");
 		m.setEspecialidad("general");
 		
 		try {

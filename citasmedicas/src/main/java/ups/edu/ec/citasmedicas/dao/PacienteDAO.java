@@ -1,46 +1,43 @@
 package ups.edu.ec.citasmedicas.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ups.edu.ec.citasmedicas.modelo.Medico;
 import ups.edu.ec.citasmedicas.modelo.Paciente;
 
 public class PacienteDAO {
-	
-	@PersistenceContext
+	@PersistenceContext // coge el datasourses que tenemos en el proyecto(persistence.xml)
 	private EntityManager em;
 	
-	public void insert(Paciente paciente) {
-		em.persist(paciente);
+	public void insert(Paciente p) {
+		em.persist(p);
 	}
 	
-	public void update(Paciente paciente) {
-		em.merge(paciente);
+	public void update(Paciente p) {
+		em.merge(p);
 	}
 	
-	public Paciente read(String cedula) {
-		Paciente p = em.find(Paciente.class, cedula);
+	public Paciente read(String id) {
+		Paciente p= em.find(Paciente.class, id);
 		return p;
 	}
 	
-	public void delete(String cedula) {
-		Paciente p = em.find(Paciente.class, cedula);
+	
+	public void delete(int id) {
+		Paciente p= em.find(Paciente.class, id);
 		em.remove(p);
 	}
-	
-	public List<Paciente> getPacientes(String nombre){
-		
-		String jpql2="SELECT p FROM Paciente p WHERE nombre LIKE ?1";
-		
-		nombre= nombre+"%";
-		Query query= em.createQuery(jpql2, Paciente.class);
-		query.setParameter(1, nombre);
-		
-		List<Paciente> personas=query.getResultList();
-		return personas;
-		
+	public List<Paciente> getList(){
+		List<Paciente> listado=new ArrayList<Paciente>();
+		String jpql="SELECT p FROM Paciente p";
+		Query query= em.createQuery(jpql,Paciente.class);
+		listado = query.getResultList();
+		return listado;
 	}
+	
 }

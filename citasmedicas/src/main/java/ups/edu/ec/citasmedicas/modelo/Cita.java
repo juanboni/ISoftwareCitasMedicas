@@ -17,6 +17,9 @@ public class Cita {
 	@OneToOne
 	@JoinColumn(name = "id")
 	private Medico medico;
+	private String estado;
+	private String hora; 
+	private String fecha;
 	public int getId() {
 		return id;
 	}
@@ -34,6 +37,24 @@ public class Cita {
 	}
 	public void setMedico(Medico medico) {
 		this.medico = medico;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public String getHora() {
+		return hora;
+	}
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+	public String getFecha() {
+		return fecha;
+	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 	
 	
